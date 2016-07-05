@@ -16,7 +16,7 @@ class Service extends \PhalconRest\User\Service
 
         $role = AclRoles::UNAUTHORIZED;
 
-        if($userModel && in_array($userModel->role, AclRoles::ALL_ROLES)){
+        if($userModel && in_array($userModel->role, AclRoles::ALL_ROLES())){
             $role = $userModel->role;
         }
 

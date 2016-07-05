@@ -4,6 +4,7 @@ namespace App\Bootstrap;
 
 use App\BootstrapInterface;
 use App\Collections\ExportCollection;
+use App\Resources\BriefResource;
 use App\Resources\UserResource;
 use App\Resources\AlbumResource;
 use App\Resources\PhotoResource;
@@ -20,6 +21,7 @@ class CollectionBootstrap implements BootstrapInterface
             ->collection(ExportCollection::factory('/export'))
             ->resource(UserResource::factory('/users'))
             ->resource(AlbumResource::crud('/albums'))
+            ->resource(BriefResource::crud('/briefs'))
             ->resource(PhotoResource::crud('/photos'));
     }
 }

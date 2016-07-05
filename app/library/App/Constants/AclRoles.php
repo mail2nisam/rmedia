@@ -10,5 +10,8 @@ class AclRoles
     const MANAGER = 'Manager';
     const ADMINISTRATOR = 'Administrator';
 
-    const ALL_ROLES = [self::UNAUTHORIZED, self::AUTHORIZED, self::USER, self::MANAGER, self::ADMINISTRATOR];
+//    const ALL_ROLES = [self::UNAUTHORIZED, self::AUTHORIZED, self::USER, self::MANAGER, self::ADMINISTRATOR];
+    public static function ALL_ROLES(){
+        return [self::UNAUTHORIZED, self::AUTHORIZED, self::USER, self::MANAGER, self::ADMINISTRATOR];
+    }
 }

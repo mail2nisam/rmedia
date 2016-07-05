@@ -6,10 +6,11 @@
     "license": "MIT",
     "homepage": "http://phalcon-rest.redound.org",
     "require": {
-        "php": ">= 5.6",
-        "redound/phalcon-rest": "^1.4.0",
+        "php": ">= 5.5",
+        "nisam/ph-rest": "dev-master",
         "league/fractal": "^0.13.0",
-        "firebase/php-jwt": "^3.0"
+        "firebase/php-jwt": "^3.0",
+        "podio/podio-php": "^4.3"
     },
     "require-dev": {
         "codeception/codeception": "^2.1"

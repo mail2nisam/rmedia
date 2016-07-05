@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use PhalconRest\Mvc\Controllers\CrudResourceController;
+use \App\Transformers\UserTransformer;
 
 class UserController extends CrudResourceController
 {
@@ -19,7 +20,7 @@ class UserController extends CrudResourceController
         $session = $this->authManager->loginWithUsernamePassword(\App\Auth\UsernameAccountType::NAME, $username,
             $password);
 
-        $transformer = new \App\Transformers\UserTransformer;
+        $transformer = new UserTransformer;
         $transformer->setModelClass('App\Model\User');
 
         $user = $this->createItemResponse(\App\Model\User::findFirst($session->getIdentity()), $transformer);

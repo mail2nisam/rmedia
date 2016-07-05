@@ -117,5 +117,14 @@ class ServiceBootstrap implements BootstrapInterface
          * @description PhalconRest - \PhalconRest\User\Service
          */
         $di->setShared(Services::USER_SERVICE, new UserService);
+
+
+
+        $configFile = CONFIG_DIR . '/podio.php';
+
+        $di->setShared(Services::PODIO, function () use ($configFile) {
+            $config = new \Phalcon\Config\Adapter\Php($configFile);
+            return $config;
+        });
     }
 }

@@ -65,8 +65,13 @@ try {
         new App\Bootstrap\RouteBootstrap,
         new App\Bootstrap\AclBootstrap
     );
-
+    
     $bootstrap->run($app, $di, $config);
+
+    $app->notFound(function () use ($app) {
+      $app->response->setStatusCode(404, "Not Found")->sendHeaders();
+      echo 'This is crazy, but this page was not found!';
+    });
 
     // Start application
     $app->handle();
