@@ -2,6 +2,7 @@
 
 namespace App\Bootstrap;
 
+use App\User\Service;
 use Phalcon\Config;
 use PhalconRest\Api;
 use Phalcon\DiInterface;
@@ -119,12 +120,18 @@ class ServiceBootstrap implements BootstrapInterface
         $di->setShared(Services::USER_SERVICE, new UserService);
 
 
+        /**
+         * Loading APPLICATION_ENV specific config files
+         */
+        foreach (Services::configFiles() as $file){
 
-        $configFile = CONFIG_DIR . '/podio.php';
+            $configFile = CONFIG_DIR ."/".APPLICATION_ENV. "/{$file}.php";
 
-        $di->setShared(Services::PODIO, function () use ($configFile) {
-            $config = new \Phalcon\Config\Adapter\Php($configFile);
-            return $config;
-        });
+            $di->setShared($file, function () use ($configFile) {
+                $config = new \Phalcon\Config\Adapter\Php($configFile);
+                return $config;
+            });
+        }
+
     }
 }
